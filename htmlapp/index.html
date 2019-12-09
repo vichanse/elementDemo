@@ -7,9 +7,21 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <script src="countdown-element.js"></script>
         <title>Angular Elements</title>
+        <script charset="utf-8">
+            function doStart() {
+                document.querySelector('count-down').start();
+            }
+
+            function doStop() {
+                document.querySelector('count-down').stop();
+            }
+        </script>
     </head>
 
     <body>
         <count-down></count-down>
+
+        <button onclick="doStart()">Start</button>
+        <button onclick="doStop()">Stop</button>
     </body>
 </html>

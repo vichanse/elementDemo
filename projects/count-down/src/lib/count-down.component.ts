@@ -27,12 +27,10 @@ export class CountDownComponent implements OnInit {
     constructor(private service: CountDownService) {}
 
     ngOnInit() {
-        console.log(this.countdownFrom);
         const counter$ = interval(1000);
         merge(this.start$, this.stop$)
             .pipe(
                 switchMap(shouldStart => {
-                    console.log(shouldStart);
                     return shouldStart ? counter$ : empty();
                 }),
                 mapTo(-1),
@@ -57,4 +55,14 @@ export class CountDownComponent implements OnInit {
     stopTimer() {
         this.service.stopCounter();
     }
+
+    @Input()
+    public start = () => {
+        this.startTimer();
+    };
+
+    @Input()
+    public stop = () => {
+        this.stopTimer();
+    };
 }
